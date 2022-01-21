@@ -1,6 +1,6 @@
 # Keycloak Installer
 
-Keycloak Installer is a set of scripts that handles the installation and configuration of keycloak.
+Keycloak Installer is a set of scripts that handles the installation and configuration of a keycloak standalone server.
 
 ## Installation
 
