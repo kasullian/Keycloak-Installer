@@ -19,13 +19,21 @@ cp standalone.xml /opt; cp new-cert-to-keystore.sh /opt; cp post-hook.sh /opt; c
 #copy env variables into /etc/profile.d
 cp keycloak.sh /etc/profile.d
 
+#import env vars
+source /etc/profile
+
 #download and unzip targeted keycloak version, todo: write configuration into standalone.xml
 cd /opt
 wget https://github.com/keycloak/keycloak/releases/download/15.0.2/keycloak-15.0.2.zip
 unzip keycloak-15.0.2.zip
 rm keycloak-15.0.2.zip
 mv keycloak-15.0.2 /opt/keycloak
+#modify standalone.xml to include your alias & passwords
+sed -i 's/KEYSTORE_PASSWORD/'"$KEYSTORE_PASSWORD"'/g' standalone.xml
+sed -i 's/KEYCLOAK_SSL_ALIAS/'"$KEYCLOAK_SSL_ALIAS"'/g' standalone.xml
+sed -i 's/KEYCLOAK_SSL_PASSWORD/'"$KEYCLOAK_SSL_PASSWORD"'/g' standalone.xml
 mv standalone.xml /opt/keycloak/standalone/configuration
+certbot certonly --standalone --preferred-challenges http -d $DOMAIN_SUBDOMAIN
 
 #create keycloak user and assign ownership
 groupadd keycloak
@@ -46,9 +54,6 @@ snap remove core20
 snap install core20
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
-
-#import env vars
-source /etc/profile
 
 #retrieve cert from lets encrypt
 ufw allow 80/tcp
