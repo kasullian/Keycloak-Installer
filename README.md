@@ -18,5 +18,5 @@ git clone https://gitlab.com/Kasull/keycloak-installer.git
 
 ```bash
 sudo chmod +x installer.sh
-./installer.sh
+sudo ./installer.sh
 ```
