@@ -19,3 +19,8 @@ git clone https://gitlab.com/Kasull/keycloak-installer.git
 sudo chmod +x installer.sh
 sudo ./installer.sh
 ```
+
+## Test SSL renewel through certbot
+```
+sudo certbot renew --dry-run
+```
