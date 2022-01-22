@@ -2,20 +2,15 @@
 
 Keycloak Installer is a set of scripts that handles the installation and configuration of a keycloak standalone server.
 
-## Installation
-
-Clone the repository to your desired location.
-
-```bash
-git clone https://gitlab.com/Kasull/keycloak-installer.git
-```
-
 ## Configuration
 * Replace all values within keycloak.sh with your desired domain, passwords, and alias
 
-## Usage
-
+## Installation
 ```bash
+# Clone the repo
+git clone https://github.com/kasullian/Keycloak-Installer
+
+# Install keycloak
 sudo chmod +x installer.sh
 sudo ./installer.sh
 ```
