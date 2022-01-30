@@ -11,8 +11,8 @@ Keycloak Installer is a set of scripts that handles the installation and configu
 git clone https://github.com/kasullian/Keycloak-Installer
 
 # Install keycloak
-sudo chmod +x installer.sh
-sudo ./installer.sh
+sudo chmod +x install.sh
+sudo ./install.sh
 ```
 
 ## Test SSL renewel through certbot
