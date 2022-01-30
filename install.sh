@@ -7,14 +7,15 @@ systemctl disable keycloak
 
 #install necessary tools
 apt-get update
-apt-get install unzip
+apt-get install unzip -y
 apt-get install default-jdk -y
+sudo apt install ufw -y
 
 #copy template service into systemd service directory
 cp keycloak.service /etc/systemd/system/keycloak.service
 
 #copy required config files for ssl & auto renewal
-p standalone.xml /opt; cp post-hook.sh /opt; cp pre-hook.sh /opt; cp new-cert-to-keystore.sh /opt
+cp standalone.xml /opt; cp post-hook.sh /opt; cp pre-hook.sh /opt; cp new-cert-to-keystore.sh /opt
 
 #copy env variables into /etc/profile.d
 cp keycloak.sh /etc/profile.d
